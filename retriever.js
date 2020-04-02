@@ -11,7 +11,7 @@ const test = function () {
 // it's next step before retriever is done
 //
 // returns profile structure from github
-function retrieveGithubProject(username) {
+function retrieveGithubProfile(username) {
     return new Promise(function (resolve, reject) {
         console.log(`retrieveGithubProject with parameter ${username}`);
         
@@ -31,5 +31,5 @@ function retrieveGithubProject(username) {
 
 module.exports = {
     test: test,
-    retrieveGithubProject: retrieveGithubProject
+    retrieveGithubProfile: retrieveGithubProfile
 };

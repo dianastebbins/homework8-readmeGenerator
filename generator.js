@@ -7,7 +7,7 @@ const test = function () {
 
 function generateReadme(details) {
     const readme = getTemplate(details);
-    fs.writeFile("generated/README.md", readme, function (err) {
+    fs.writeFile(`README_${details.github}.md`, readme, function (err) {
         if (err) {
             return console.log(err);
         }
@@ -16,7 +16,21 @@ function generateReadme(details) {
 }
 
 function getTemplate(details) {
+    const github = details.github;
+    const email = details.email;
     const title = details.title;
+    const description = details.description;
+    const installation = details.installation;
+    const usage = details.usage;
+    const license = details.license;
+    const contributing = details.contributing;
+    const tests = details.tests;
+
+    // // still to go...
+    // const badges = asdf.badges;
+    // const url = asdf.url;
+    // const profilePic = asdf.profilePic;
+
     const highlighter = "```";
 
     const template =
@@ -27,7 +41,7 @@ badges go here
 
 ## Project Description
 ${highlighter}
-words go here
+${description}
 ${highlighter}
 
 ## Table of Contents
@@ -40,7 +54,7 @@ ${highlighter}
 
 ### Installation
 ${highlighter}
-words go here
+${installation}
 
 url to deployed app: 
 ${highlighter}
@@ -48,28 +62,28 @@ https://dianastebbins.github.io/homework3-passwordGenerator/
 
 ### Usage
 ${highlighter}
-usage goes here
+${usage}
 ${highlighter}
 
 ### License
 ${highlighter}
-words go here
+${license}
 ${highlighter}
 
 ### Contributing
 ${highlighter}
-words go here
+${contributing}
 ${highlighter}
 
 ### Tests
 ${highlighter}
-tests go here
+${tests}
 ${highlighter}
 
 ### Questions
 ${highlighter}
-For questions or comments, please contact username:
-email goes here
+For questions or comments, please contact ${github}:
+${email}
 ${highlighter}
 profile picture goes here`;
     return template;

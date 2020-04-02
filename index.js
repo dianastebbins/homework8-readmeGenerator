@@ -8,26 +8,29 @@ interviewer.test();
 retriever.test();
 generator.test();
 
-// prompt user for input
 // github user name
-// call github API
 // retrieve profile image
 
 
 function startProcess() {
     let userInput = [];
-
+    let profileInfo = [];
+    
+    // prompt user for input
     interviewer.getUserInput()
-        .then(function (interviewerResponse) {
-            // console.log(`within index, INTERVIEWER response: ${JSON.stringify(interviewerResponse)}`);
-            
-            // response provides github, email, title, description, installation, usage, license, contributing, tests
-            userInput = interviewerResponse;
-            return retriever.retrieveGithubProject(userInput.github);
+    .then(function (interviewerResponse) {
+        // console.log(`within index, INTERVIEWER response: ${JSON.stringify(interviewerResponse)}`);
+        
+        // response provides github, email, title, description, installation, usage, license, contributing, tests
+        userInput = interviewerResponse;
+        // call github API with github username
+        return retriever.retrieveGithubProfile(userInput.github);
         })
         .then(function (retrieverResponse) {
             // console.log(`within index, RETRIEVER response: ${JSON.stringify(retrieverResponse)}`);
 
+            profileInfo = retrieverResponse.data;
+            console.log(profileInfo);
             generator.generateReadme(userInput);
         })
         .catch(function (err) {
