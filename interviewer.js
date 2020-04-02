@@ -30,36 +30,36 @@ function getUserInputAsync() {
                     message: "Hi! Let's build a README.md for your project! First, what is your github username?",
                     name: "github"
                 },
-                {
-                    type: "input",
-                    message: "What is the name of the project we're building the README.md for?",
-                    name: "title",
-                },
-                {
-                    type: "input",
-                    message: "Describe what the application is used for:",
-                    name: "description",
-                },
-                {
-                    type: "input",
-                    message: "Provide any necessary installation details:",
-                    name: "installation",
-                },
-                {
-                    type: "input",
-                    message: "Describe how to use the application:",
-                    name: "usage",
-                },
-                {
-                    type: "input",
-                    message: "Provide any necessary license details:",
-                    name: "license",
-                },
-                {
-                    type: "input",
-                    message: "Describe how to contribute to this project:",
-                    name: "contributing",
-                },
+                // {
+                //     type: "input",
+                //     message: "What is the name of the project we're building the README.md for?",
+                //     name: "title",
+                // },
+                // {
+                //     type: "input",
+                //     message: "Describe what the application is used for:",
+                //     name: "description",
+                // },
+                // {
+                //     type: "input",
+                //     message: "Provide any necessary installation details:",
+                //     name: "installation",
+                // },
+                // {
+                //     type: "input",
+                //     message: "Describe how to use the application:",
+                //     name: "usage",
+                // },
+                // {
+                //     type: "input",
+                //     message: "Provide any necessary license details:",
+                //     name: "license",
+                // },
+                // {
+                //     type: "input",
+                //     message: "Describe how to contribute to this project:",
+                //     name: "contributing",
+                // },
                 {
                     type: "input",
                     message: "Finally, provide testing details:",

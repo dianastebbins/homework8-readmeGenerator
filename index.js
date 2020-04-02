@@ -14,13 +14,21 @@ generator.test();
 // retrieve profile image
 
 interviewer.getUserInputAsync()
-    .then(function (response) {
+    .then(function(interviewerResponse){
         // response provides github, title, description, installation, usage, license, contributing, tests
-        console.log(`within index, response: ${JSON.stringify(response)}`);
-        // console.log(JSON.stringify(response));
+        console.log(`within index, INTERVIEWER response: ${JSON.stringify(interviewerResponse)}`);
+    
+        retriever.retrieveGithubProject(interviewerResponse.github)
+        .then(function(retrieverResponse){
+            console.log(`within index, RETRIEVER response: ${JSON.stringify(retrieverResponse)}`);        
+        })
+        .catch(function(retErr){
+            console.log(`within index, error received: ${retErr}`);
+            
+        });
     })
-    .catch(function (err) {
-        console.log(`within index, error received: ${err}`);
+    .catch(function(intErr){
+        console.log(`within index, error received: ${intErr}`);
     });
 
 
