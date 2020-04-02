@@ -5,23 +5,13 @@ const test = function () {
     console.log("Interviewer here");
 }
 
-// github user name
-// call github API
-// retrieve email -- how to report issues
-// retrieve profile image
-// other prompts:
-// project title
-// project description -- what is the app for
-// installation -- how to install it
-// usage --how to use the app
-// license
-// contributing -- how to make contributions
-// tests
-
-
 // prompt user for input
-// github, title, description, installation, usage, license, contributing, tests
-function getUserInputAsync() {
+//
+// wrapping getUserInput in a Promise layer so the caller (index.js) does not try to move to
+// it's next step before inquirer is done
+//
+// github, email, title, description, installation, usage, license, contributing, tests
+function getUserInput() {
     return new Promise(function (resolve, reject) {
         inquirer
             .prompt([
@@ -29,6 +19,11 @@ function getUserInputAsync() {
                     type: "input",
                     message: "Hi! Let's build a README.md for your project! First, what is your github username?",
                     name: "github"
+                },
+                {
+                    type: "input",
+                    message: "What is your contact email address?",
+                    name: "email"
                 },
                 // {
                 //     type: "input",
@@ -79,5 +74,5 @@ function getUserInputAsync() {
 
 module.exports = {
     test: test,
-    getUserInputAsync: getUserInputAsync
+    getUserInput: getUserInput
 };

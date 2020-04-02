@@ -1,0 +1,25 @@
+{
+  "name": "homework8-readmeGenerator",
+  "version": "1.0.0",
+  "description": "Dynamically creates a README.md file from user input.",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dianastebbins/homework8-readmeGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dianastebbins/homework8-readmeGenerator/issues"
+  },
+  "homepage": "https://github.com/dianastebbins/homework8-readmeGenerator#readme"
+}

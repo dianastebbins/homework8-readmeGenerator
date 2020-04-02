@@ -6,6 +6,10 @@ const test = function () {
 }
 
 // given a github username, retrieve repo information
+//
+// wrapping retrieveGithubProject in a Promise layer so the caller (index.js) does not try to move to
+// it's next step before retriever is done
+//
 // returns profile structure from github
 function retrieveGithubProject(username) {
     return new Promise(function (resolve, reject) {
