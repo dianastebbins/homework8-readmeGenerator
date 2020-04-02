@@ -25,11 +25,11 @@ function getUserInput() {
                     message: "What is your contact email address?",
                     name: "email"
                 },
-                // {
-                //     type: "input",
-                //     message: "What is the name of the project we're building the README.md for?",
-                //     name: "title",
-                // },
+                {
+                    type: "input",
+                    message: "What is the name of the project we're building the README.md for?",
+                    name: "title",
+                },
                 // {
                 //     type: "input",
                 //     message: "Describe what the application is used for:",

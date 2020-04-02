@@ -13,23 +13,42 @@ generator.test();
 // call github API
 // retrieve profile image
 
+
 function startProcess() {
+    let userInput = [];
+
     interviewer.getUserInput()
         .then(function (interviewerResponse) {
-            console.log(`within index, INTERVIEWER response: ${JSON.stringify(interviewerResponse)}`);
+            // console.log(`within index, INTERVIEWER response: ${JSON.stringify(interviewerResponse)}`);
             
             // response provides github, email, title, description, installation, usage, license, contributing, tests
-            return retriever.retrieveGithubProject(interviewerResponse.github);
+            userInput = interviewerResponse;
+            return retriever.retrieveGithubProject(userInput.github);
         })
         .then(function (retrieverResponse) {
-            console.log(`within index, RETRIEVER response: ${JSON.stringify(retrieverResponse)}`);
+            // console.log(`within index, RETRIEVER response: ${JSON.stringify(retrieverResponse)}`);
 
-            generator.generateReadme("crazy title");
+            generator.generateReadme(userInput);
         })
         .catch(function (err) {
             console.log(`within index, error received: ${err}`);
         });
 }
+
+
+// const writeFileAsync = util.promisify(fs.writeFile);
+// promptUser()
+//   .then(function(answers) {
+//     const html = generateHTML(answers);
+
+//     return writeFileAsync("index.html", html);
+//   })
+//   .then(function() {
+//     console.log("Successfully wrote to index.html");
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//   });
 
 // build readme
 // at least one badge

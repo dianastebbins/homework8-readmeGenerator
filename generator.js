@@ -5,10 +5,19 @@ const test = function () {
     console.log("Generator here");
 }
 
-const highlighter = "```";
-
 function generateReadme(details) {
-    const title = details;
+    const readme = getTemplate(details);
+    fs.writeFile("generated/README.md", readme, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        return console.log("README written!");
+    });
+}
+
+function getTemplate(details) {
+    const title = details.title;
+    const highlighter = "```";
 
     const template =
         `# ${title}
@@ -63,15 +72,7 @@ For questions or comments, please contact username:
 email goes here
 ${highlighter}
 profile picture goes here`;
-
-
-    const readme = template;
-    fs.writeFile("README2.md", readme, function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        return console.log("README written!");
-    });
+    return template;
 }
 
 module.exports = {
