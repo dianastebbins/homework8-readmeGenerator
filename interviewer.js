@@ -5,14 +5,11 @@ const test = function () {
     console.log("Interviewer here");
 }
 
-// prompt user for input
-//
 // wrapping getUserInput in a Promise layer so the caller (index.js) does not try to move to
 // it's next step before inquirer is done
-//
-// github, email, title, description, installation, usage, license, contributing, tests
 function getUserInput() {
     return new Promise(function (resolve, reject) {
+        // prompt user for input needed top complete README
         inquirer
             .prompt([
                 {
@@ -61,9 +58,9 @@ function getUserInput() {
                     name: "tests",
                 }
             ])
-            .then(function (response) {
-                if(false){
-                    return reject(`Something bad happened in interview`);
+            .then(function (response, err) {
+                if(err){
+                    return reject(`Something bad happened in interview: ${err}`);
                 }
     
                 console.log(`within interviewer, response: ${JSON.stringify(response)}`);
@@ -72,6 +69,7 @@ function getUserInput() {
     })
 }
 
+// make these methods available
 module.exports = {
     test: test,
     getUserInput: getUserInput

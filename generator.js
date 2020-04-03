@@ -5,9 +5,12 @@ const test = function () {
     console.log("Generator here");
 }
 
-function generateReadme(details) {
-    const readme = getTemplate(details);
-    fs.writeFile(`README_${details.github}.md`, readme, function (err) {
+function generateReadme(userInput) {
+    // populate readme template with user-specific response
+    const readme = populateTemplate(userInput);
+
+    // save the result in a readme file with users github name in the title
+    fs.writeFile(`README_${userInput.github}.md`, readme, function (err) {
         if (err) {
             return console.log(err);
         }
@@ -15,16 +18,16 @@ function generateReadme(details) {
     });
 }
 
-function getTemplate(details) {
-    const github = details.github;
-    const email = details.email;
-    const title = details.title;
-    const description = details.description;
-    const installation = details.installation;
-    const usage = details.usage;
-    const license = details.license;
-    const contributing = details.contributing;
-    const tests = details.tests;
+function populateTemplate(userInput) {
+    const github = userInput.github;
+    const email = userInput.email;
+    const title = userInput.title;
+    const description = userInput.description;
+    const installation = userInput.installation;
+    const usage = userInput.usage;
+    const license = userInput.license;
+    const contributing = userInput.contributing;
+    const tests = userInput.tests;
 
     // // still to go...
     // const badges = asdf.badges;
@@ -89,6 +92,7 @@ profile picture goes here`;
     return template;
 }
 
+// make these methods available
 module.exports = {
     test: test,
     generateReadme: generateReadme
