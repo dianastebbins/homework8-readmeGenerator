@@ -12,58 +12,63 @@ function getUserInput() {
         // prompt user for input needed top complete README
         inquirer
             .prompt([
-                {
+                {   //TODO: an array of prompts...
                     type: "input",
                     message: "Hi! Let's build a README.md for your project! First, what is your github username?",
                     name: "github"
                 },
                 {
                     type: "input",
-                    message: "What is your contact email address?",
-                    name: "email"
+                    message: "What is the name of the github repository of the project?",
+                    name: "repo",
                 },
                 {
                     type: "input",
-                    message: "What is the name of the project we're building the README.md for?",
-                    name: "title",
-                },
-                {
-                    type: "input",
-                    message: "Describe what the application is used for:",
+                    message: "Provide a description of what the application is used for:",
                     name: "description",
                 },
                 {
                     type: "input",
-                    message: "Provide any necessary installation details:",
+                    message: "Include any installation details needed:",
                     name: "installation",
+                },
+                {
+                    type: "input",
+                    message: "Include the url of the deployed application, if it applies:",
+                    name: "url",
                 },
                 {
                     type: "input",
                     message: "Describe how to use the application:",
                     name: "usage",
                 },
-                {
+                {   // TODO: checklist of possible licensing badges available
                     type: "input",
-                    message: "Provide any necessary license details:",
+                    message: "License details:",
                     name: "license",
                 },
                 {
                     type: "input",
-                    message: "Describe how to contribute to this project:",
+                    message: "Details on contributing:",
                     name: "contributing",
                 },
                 {
                     type: "input",
-                    message: "Finally, provide testing details:",
+                    message: "Testing details:",
                     name: "tests",
+                },
+                {
+                    type: "input",
+                    message: "Finally, what is your contact email address?",
+                    name: "email"
                 }
             ])
             .then(function (response, err) {
-                if(err){
+                if (err) {
                     return reject(`Something bad happened in interview: ${err}`);
                 }
-    
-                console.log(`within interviewer, response: ${JSON.stringify(response)}`);
+
+                // console.log(`within interviewer, response: ${JSON.stringify(response)}`);
                 resolve(response);
             });
     })

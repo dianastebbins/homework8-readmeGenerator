@@ -9,8 +9,6 @@ const test = function () {
 // it's next step before retriever is done
 function retrieveGithubProfile(username) {
     return new Promise(function (resolve, reject) {
-        console.log(`retrieveGithubProject with parameter ${username}`);
-        
         // given a github username, retrieve repo information
         const queryUrl = `https://api.github.com/users/${username}`;
         axios
@@ -20,7 +18,7 @@ function retrieveGithubProfile(username) {
                     return reject(`Something bad happened in retriever: ${err}`);
                 }
 
-                console.log(`within retriever, response: ${JSON.stringify(response.data)}`);
+                // console.log(`within retriever, response: ${JSON.stringify(response.data)}`);
                 resolve(response.data);
             });
     })
