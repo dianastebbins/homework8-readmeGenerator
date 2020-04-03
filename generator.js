@@ -21,40 +21,21 @@ function generateReadme(userInput, profileInfo) {
 function populateTemplate(userInput, profileInfo) {
     const highlighter = "```";
 
-    const github = userInput.github;
-    const repo = userInput.repo;
-    const description = userInput.description;
-    const installation = userInput.installation;
-    const usage = userInput.usage;
-    const license = userInput.license;
-    const contributing = userInput.contributing;
-    const tests = userInput.tests;
-    const email = userInput.email;
-
-    const profilePic = profileInfo.avatar_url;
-
-    // url gets special configuration
-    let url = ""; 
-    if(userInput.url.length > 0){
-        url += '\nurl to deployed application:\n';
-        url += highlighter + '\n';
-        url += userInput.url;
-    } else {
-        url += highlighter;
-    }
+    // only show deployed url if one exists, otherwise show empty string
+    let deployedUrl = userInput.url.length > 0 ? `[Deployed application](${userInput.url})`: "";
     
     const template =
-    `# ${repo}
+    `# ${userInput.repo}
     
 <img src="https://img.shields.io/badge/Look-I made this!-purple" alt="I Made This badge"></img>
-<img src="https://img.shields.io/github/package-json/v/${github}/${repo}" alt="package-json">
-<img src="https://img.shields.io/github/last-commit/${github}/${repo}" alt="last commit">
-<img src="https://img.shields.io/github/issues-raw/${github}/${repo}" alt="issues">
-<img src="https://img.shields.io/github/followers/${github}?label=Follow" alt="followers">
+<img src="https://img.shields.io/github/package-json/v/${userInput.github}/${userInput.repo}" alt="package-json">
+<img src="https://img.shields.io/github/last-commit/${userInput.github}/${userInput.repo}" alt="last commit">
+<img src="https://img.shields.io/github/issues-raw/${userInput.github}/${userInput.repo}" alt="issues">
+<img src="https://img.shields.io/github/followers/${userInput.github}?label=Follow" alt="followers">
 
 ## Project Description
 ${highlighter}
-${description}
+${userInput.description}
 ${highlighter}
 
 ## Table of Contents
@@ -67,35 +48,36 @@ ${highlighter}
 
 ### Installation
 ${highlighter}
-${installation}
-${url}
+${userInput.installation}
+${highlighter}
+${deployedUrl}
 
 ### Usage
 ${highlighter}
-${usage}
+${userInput.usage}
 ${highlighter}
 
 ### License
 ${highlighter}
-${license}
+${userInput.license}
 ${highlighter}
 
 ### Contributing
 ${highlighter}
-${contributing}
+${userInput.contributing}
 ${highlighter}
 
 ### Tests
 ${highlighter}
-${tests}
+${userInput.tests}
 ${highlighter}
 
 ### Questions
 ${highlighter}
-For questions or comments, please contact ${github}:
-${email}
+For questions or comments, please contact ${userInput.github}:
+${userInput.email}
 ${highlighter}
-<img src="${profilePic}" alt="profile pic" width="200px" height="200px">`;
+<img src="${profileInfo.avatar_url}" alt="profile pic" width="200px" height="200px">`;
 
     return template;
 }
